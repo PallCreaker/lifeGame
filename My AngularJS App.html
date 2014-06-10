@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<!-- saved from url=(0071)http://dl.dropboxusercontent.com/u/31719381/angular-seed/app/index.html -->
+<html lang="jp" ng-app="myApp" class="ng-scope"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide{display:none !important;}ng\:form{display:block;}.ng-animate-start{border-spacing:1px 1px;-ms-zoom:1.0001;}.ng-animate-active{border-spacing:0px 0px;-ms-zoom:1;}</style>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+  <link rel="stylesheet" href="http://dl.dropboxusercontent.com/u/31719381/angular-seed/app/css/app.css">
+<style>[touch-action="none"]{ -ms-touch-action: none; touch-action: none; }[touch-action="pan-x"]{ -ms-touch-action: pan-x; touch-action: pan-x; }[touch-action="pan-y"]{ -ms-touch-action: pan-y; touch-action: pan-y; }[touch-action="scroll"],[touch-action="pan-x pan-y"],[touch-action="pan-y pan-x"]{ -ms-touch-action: pan-x pan-y; touch-action: pan-x pan-y; }</style></head>
+<body>
+    <h1>ライフゲーム</h1>
+
+    <section ng-controller="Lifegame" class="ng-scope">
+        幅<input type="text" ng-model="width" class="ng-pristine ng-valid">
+        高さ<input type="text" ng-model="height" class="ng-pristine ng-valid">
+
+        <button ng-click="next()">次に進む</button>
+        <button ng-click="start()">動く</button>
+        <button ng-click="pause()">止める</button>
+
+        <table>
+            <tbody><!-- ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope alive">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope alive">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope alive">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope alive">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope alive">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope alive">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope alive">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) --><tr ng-repeat="y in range(height)" class="ng-scope">
+                <!-- ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) --><td ng-repeat="x in range(width)" ng-click="invert(x, y)" ng-class="{alive: isAlive(x, y)}" class="ng-scope">
+                </td><!-- end ngRepeat: x in range(width) -->
+            </tr><!-- end ngRepeat: y in range(height) -->
+        </tbody></table>
+    </section>
+
+  <script src="./My AngularJS App_files/underscore.js"></script>
+  <script src="./My AngularJS App_files/angular.js"></script>
+  <script src="./My AngularJS App_files/angular-route.js"></script>
+  <script src="./My AngularJS App_files/app.js"></script>
+  <script src="./My AngularJS App_files/services.js"></script>
+  <script src="./My AngularJS App_files/controllers.js"></script>
+  <script src="./My AngularJS App_files/filters.js"></script>
+  <script src="./My AngularJS App_files/directives.js"></script>
+
+
+</body></html>
